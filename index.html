@@ -1,41 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <title>Bansi </title>
-    <link rel="stylesheet" href="./style.css">
+<head>
+<meta charset="UTF-8">
+<title>Bansi</title>
 
-  </head>
-    
-  <body>
-  <h1>
-  Bansi, you are my shona, jaanu, cutie, hottie, my baby, my laduku viman😭,  
-  basically you are everything to me so I guess then I can call you meri jaan.  
-  So for that...‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ Will you be my Valentine? 💖
+<style>
+body {
+  background-color: pink;
+  text-align: center;
+  font-family: Comic Sans MS;
+}
+
+#buttons {
+  position: relative;
+  height: 200px;
+}
+
+button {
+  font-size: 22px;
+  padding: 10px 20px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
+  transition: 0.2s;
+}
+
+#noBtn {
+  position: absolute;
+}
+
+.explosion {
+  position: absolute;
+  font-size: 26px;
+  animation: floatUp 1s forwards;
+}
+
+@keyframes floatUp {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-150px); }
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>
+Bansi, you are my shona, jaanu, cutie, hottie, my baby, my laduku viman😭,  
+basically you are everything to me so I guess then I can call you meri jaan.  
+So for that... Will you be my Valentine? 💖
 </h1>
-<h2> us, ok jaanu? -->
-<img 
-  src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHozeWtuYTB1N2hnaXBpdmI5MDUzYjlydjNhOGh3bGRpenUxNzcxeiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l2YWALcn62s1Xk1xe/giphy.gif" 
-  width="200"
-/>
 
-<h4>
-  
-</h4>
+<h2>us, ok jaanu?</h2>
+
+<img 
+src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHozeWtuYTB1N2hnaXBpdmI5MDUzYjlydjNhOGh3bGRpenUxNzcxeiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l2YWALcn62s1Xk1xe/giphy.gif"
+width="200"
+/>
 
 <br><br>
 
 <div id="buttons">
-  <button onclick="sayYes()">Yes 💕</button>
-  <button id="noBtn">No 🙃</button>
+<button onclick="sayYes()">Yes 💕</button>
+<button id="noBtn">No 🙃</button>
 </div>
 
 <p id="message"></p>
 
 <div id="explosions"></div>
-    <script  src="./script.js"></script>
 
-  </body>
-  
+<script>
+const noBtn = document.getElementById("noBtn");
+let noSize = 22;
+
+noBtn.addEventListener("mouseover", () => {
+  const x = Math.random() * 320;
+  const y = Math.random() * 150;
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+
+  noSize = Math.max(10, noSize - 2);
+  noBtn.style.fontSize = noSize + "px";
+});
+
+function sayYes() {
+  document.getElementById("message").innerText =
+  "YAYYYY 😭💖 AHAHAHAH YESSSSS!!! BANSI HU TANE BAU PREM KARU CHHU!!!!";
+
+  for (let i = 0; i < 25; i++) {
+    createExplosion();
+  }
+}
+
+function createExplosion() {
+  const flower = document.createElement("div");
+  flower.className = "explosion";
+  flower.innerText = "🌸";
+
+  flower.style.left = Math.random() * window.innerWidth + "px";
+  flower.style.top = Math.random() * window.innerHeight + "px";
+
+  document.body.appendChild(flower);
+
+  setTimeout(() => flower.remove(), 1000);
+}
+</script>
+
+</body>
 </html>
